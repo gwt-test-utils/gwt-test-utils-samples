@@ -1,4 +1,4 @@
 gwt-test-utils-samples
 ======================
 
-Samples project to show how to use gwt-test-utils
+Sample projects to show how to use gwt-test-utils
