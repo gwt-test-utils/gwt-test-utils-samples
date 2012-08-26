@@ -1,7 +1,7 @@
 gwt-test-utils-samples
 ======================
 
-Sample projects to show how to use gwt-test-utils
+Sample projects to show how to use gwt-test-utils :
 
 * **sample** : illustrates [Unit testing basics](https://github.com/gwt-test-utils/gwt-test-utils/wiki/Unit-testing-basics).
 * **sample-csv** : illustrates [Writing csv scenarios](https://github.com/gwt-test-utils/gwt-test-utils/wiki/Writing-csv-scenarios).
