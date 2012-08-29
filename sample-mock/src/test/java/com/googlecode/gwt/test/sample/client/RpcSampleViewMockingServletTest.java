@@ -22,28 +22,33 @@ import com.googlecode.gwt.test.web.MockServletContext;
 @GwtModule("com.googlecode.gwt.test.sample.MockSample")
 public class RpcSampleViewMockingServletTest extends GwtTest {
 
+   /** Servlet API mock helpers from gwt-test-utils **/
+   private MockServletConfig mockConfig;
+   private MockHttpServletRequest mockRequest;
+
    @Before
    public void before() {
+      // create the ServletConfig object using gwt-test-utils web mock helper
+      MockServletContext context = new MockServletContext();
+      context.setServerInfo("mocked-server-info");
+      this.mockConfig = new MockServletConfig(context);
+
+      // same thing for HttpServletRequest
+      this.mockRequest = new MockHttpServletRequest();
+      this.mockRequest.addHeader("User-Agent", "mocked-user-agent");
+
       // use the provided adapter to implement only the methods you need for your test
       setServletMockProvider(new ServletMockProviderAdapter() {
 
          @Override
          public ServletConfig getMockedConfig(AbstractRemoteServiceServlet remoteService) {
-            // mock the serverInfo in ServerConfig
-            MockServletContext context = new MockServletContext();
-            context.setServerInfo("mocked-server-info");
-
-            return new MockServletConfig(context);
+            return mockConfig;
          }
 
          @Override
          public HttpServletRequest getMockedRequest(AbstractRemoteServiceServlet rpcService,
                   Method rpcMethod) {
-            // mock the user-agent header in HttpServletRequest
-            MockHttpServletRequest mock = new MockHttpServletRequest();
-            mock.addHeader("User-Agent", "mocked-user-agent");
-
-            return mock;
+            return mockRequest;
          }
       });
 
