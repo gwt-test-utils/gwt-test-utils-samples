@@ -1,0 +1,27 @@
+A complete scenario to validate all SampleView behaviors
+
+start
+
+** starts the CsvSample EntryPoint
+initApp
+
+** pre-assertions
+isNotVisible;/sampleView/label
+
+
+
+
+assertText;*empty*;/sampleView/textBox
+isNotEnabled;/sampleView/button
+
+** actions
+fillTextBox;test CSV;/sampleView/textBox
+click;/sampleView/button
+
+** assertions
+isVisible;/sampleView/label
+
+assertExact;Hello test CSV;/root/widget(0)/label/text
+assertExact;Hello test CSV;/app/sampleView/label/text
+assertExact;Hello test CSV;/sampleView/label/text
+assertText;Hello test CSV;/sampleView/label
