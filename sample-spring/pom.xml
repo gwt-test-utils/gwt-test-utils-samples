@@ -37,7 +37,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -71,6 +70,8 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
+							<goal>i18n</goal>
+							<goal>generateAsync</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -79,6 +80,7 @@
 				<configuration>
 					<runTarget>SpringSample.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
+					<i18nMessagesBundle>com.googlecode.gwt.test.sample.client.Messages</i18nMessagesBundle>
 				</configuration>
 			</plugin>
 
