@@ -6,18 +6,19 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class SampleView extends Composite {
+public class RpcSampleView extends Composite {
 
-   interface SampleViewUiBinder extends UiBinder<Widget, SampleView> {
+   interface RpcSampleViewUiBinder extends UiBinder<Widget, RpcSampleView> {
    }
 
-   private static SampleViewUiBinder uiBinder = GWT.create(SampleViewUiBinder.class);
+   private static RpcSampleViewUiBinder uiBinder = GWT.create(RpcSampleViewUiBinder.class);
 
    @UiField
    Button button;
@@ -28,12 +29,14 @@ public class SampleView extends Composite {
    @UiField
    TextBox textBox;
 
-   public SampleView() {
+   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+
+   public RpcSampleView() {
       initWidget(uiBinder.createAndBindUi(this));
       label.setVisible(false);
       button.setEnabled(false);
       // add a debug id
-      ensureDebugId("sampleView");
+      ensureDebugId("rpcSampleView");
    }
 
    @Override
@@ -45,8 +48,18 @@ public class SampleView extends Composite {
 
    @UiHandler("button")
    void onClick(ClickEvent e) {
-      label.setText("Hello " + textBox.getText());
-      label.setVisible(true);
+      greetingService.greetServer(textBox.getText(), new AsyncCallback<String>() {
+
+         public void onFailure(Throwable caught) {
+            label.setText("Server error: " + caught.getMessage());
+            label.setVisible(true);
+         }
+
+         public void onSuccess(String result) {
+            label.setText(result);
+            label.setVisible(true);
+         }
+      });
    }
 
    @UiHandler("textBox")

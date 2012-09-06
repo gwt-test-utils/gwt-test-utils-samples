@@ -1,4 +1,4 @@
-A complete scenario to validate all SampleView behaviors
+A complete scenario to validate all RpcSampleView behaviors
 
 start
 
@@ -6,22 +6,26 @@ start
 initApp
 
 ** pre-assertions
-isNotVisible;/sampleView/label
+isNotVisible;/rpcSampleView/label
+assertText;*empty*;/rpcSampleView/textBox
+isNotEnabled;/rpcSampleView/button
 
+** action 1
+fillTextBox;123;/rpcSampleView/textBox
+click;/rpcSampleView/button
 
+** assertions 1
+isVisible;/rpcSampleView/label
+assertText;Server error: Name must be at least 4 characters long;/rpcSampleView/label
 
+** action 2
+fillTextBox;test CSV;/rpcSampleView/textBox
+click;/rpcSampleView/button
 
-assertText;*empty*;/sampleView/textBox
-isNotEnabled;/sampleView/button
-
-** actions
-fillTextBox;test CSV;/sampleView/textBox
-click;/sampleView/button
-
-** assertions
-isVisible;/sampleView/label
-
-assertExact;Hello test CSV;/root/widget(0)/label/text
-assertExact;Hello test CSV;/app/sampleView/label/text
-assertExact;Hello test CSV;/sampleView/label/text
-assertText;Hello test CSV;/sampleView/label
+** assertions 2
+isVisible;/rpcSampleView/label
+assertContains;Hello, test CSV!;/root/widget(0)/label/text
+assertContains;Hello, test CSV!;/app/rpcSampleView/label/text
+assertContains;Hello, test CSV!;/rpcSampleView/label/text
+assertContains;Hello, test CSV!;/rpcSampleView/label
+assertText;Hello, test CSV!<br><br>I am running mocked-server-info.<br><br>It looks like you are using:<br>mocked-user-agent;/rpcSampleView/label

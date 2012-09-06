@@ -1,0 +1,8 @@
+macro;InitialisationMacro
+** starts the CsvSample EntryPoint
+initApp
+** pre-assertions
+isNotVisible;gwt-debug-rpcSampleView-label
+assertText;*empty*;gwt-debug-rpcSampleView-textBox
+isNotEnabled;gwt-debug-rpcSampleView-button
+endmacro
