@@ -1,3 +1,4 @@
 sample-spring/target
 sample/target
 sample-spring-csv/target
+/sample-spring/nbactions.xml
