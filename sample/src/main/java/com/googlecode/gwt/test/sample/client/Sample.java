@@ -8,11 +8,11 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class Sample implements EntryPoint {
 
-   /**
-    * This is the entry point method.
-    */
-   public void onModuleLoad() {
-      RootPanel.get("container").add(new SampleView());
-   }
+    /**
+     * This is the entry point method.
+     */
+    public void onModuleLoad() {
+        RootPanel.get("container").add(new SampleView());
+    }
 
 }

@@ -5,6 +5,6 @@ import com.googlecode.gwt.test.sample.shared.FooBean;
 
 public interface FooBeanFactory {
 
-  FooBean createFooBean(String name);
+    FooBean createFooBean(String name);
 
 }

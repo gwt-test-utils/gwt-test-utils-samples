@@ -19,4 +19,4 @@ click;gwt-debug-rpcSampleView-button
 
 ** assertions 2
 isVisible;gwt-debug-rpcSampleView-label
-assertText;Hello, test CSV!<br><br>I am running mocked-server-info.<br><br>It looks like you are using:<br>mocked-user-agent;gwt-debug-rpcSampleView-label
+assertText;Hello, test CSV!<br><br>I am running MockServletContext.<br><br>It looks like you are using:<br>mocked-user-agent;gwt-debug-rpcSampleView-label

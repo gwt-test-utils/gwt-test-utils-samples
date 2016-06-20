@@ -7,6 +7,6 @@ import com.googlecode.gwt.test.sample.shared.FooBean;
 @RemoteServiceRelativePath("rpc/myService")
 public interface MyService extends RemoteService {
 
-  public FooBean createBean(String name);
+    public FooBean createBean(String name);
 
 }

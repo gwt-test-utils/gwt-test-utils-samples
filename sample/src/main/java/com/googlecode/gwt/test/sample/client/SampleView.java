@@ -6,44 +6,40 @@ import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.*;
 
 public class SampleView extends Composite {
 
-   interface SampleViewUiBinder extends UiBinder<Widget, SampleView> {
-   }
+    interface SampleViewUiBinder extends UiBinder<Widget, SampleView> {
+    }
 
-   private static SampleViewUiBinder uiBinder = GWT.create(SampleViewUiBinder.class);
+    private static SampleViewUiBinder uiBinder = GWT.create(SampleViewUiBinder.class);
 
-   @UiField
-   Button button;
+    @UiField
+    Button button;
 
-   @UiField
-   Label label;
+    @UiField
+    Label label;
 
-   @UiField
-   TextBox textBox;
+    @UiField
+    TextBox textBox;
 
-   public SampleView() {
-      initWidget(uiBinder.createAndBindUi(this));
-      label.setVisible(false);
-      button.setEnabled(false);
-   }
+    public SampleView() {
+        initWidget(uiBinder.createAndBindUi(this));
+        label.setVisible(false);
+        button.setEnabled(false);
+    }
 
-   @UiHandler("button")
-   void onClick(ClickEvent e) {
-      label.setText("Hello " + textBox.getText());
-      label.setVisible(true);
-   }
+    @UiHandler("button")
+    void onClick(ClickEvent e) {
+        label.setText("Hello " + textBox.getText());
+        label.setVisible(true);
+    }
 
-   @UiHandler("textBox")
-   void onKeyPress(KeyUpEvent e) {
-      button.setEnabled(textBox.getText().trim().length() > 0);
-      label.setVisible(false);
-   }
+    @UiHandler("textBox")
+    void onKeyPress(KeyUpEvent e) {
+        button.setEnabled(textBox.getText().trim().length() > 0);
+        label.setVisible(false);
+    }
 
 }

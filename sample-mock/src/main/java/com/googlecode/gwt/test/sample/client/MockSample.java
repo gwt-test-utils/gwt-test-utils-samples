@@ -8,10 +8,10 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class MockSample implements EntryPoint {
 
-   /**
-    * This is the entry point method.
-    */
-   public void onModuleLoad() {
-      RootPanel.get("mock-simple-container").add(new RpcSampleView());
-   }
+    /**
+     * This is the entry point method.
+     */
+    public void onModuleLoad() {
+        RootPanel.get("mock-simple-container").add(new RpcSampleView());
+    }
 }

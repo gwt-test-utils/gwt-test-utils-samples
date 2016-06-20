@@ -9,12 +9,12 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class SpringSample implements EntryPoint {
 
-  private final Messages messages = GWT.create(Messages.class);
+    private final Messages messages = GWT.create(Messages.class);
 
-  /**
-   * This is the entry point method.
-   */
-  public void onModuleLoad() {
-      RootPanel.get("spring-simple-container").add(new SpringSampleView());
-  }
+    /**
+     * This is the entry point method.
+     */
+    public void onModuleLoad() {
+        RootPanel.get("spring-simple-container").add(new SpringSampleView());
+    }
 }

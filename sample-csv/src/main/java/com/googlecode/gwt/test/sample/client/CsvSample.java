@@ -5,10 +5,10 @@ import com.google.gwt.user.client.ui.RootPanel;
 
 public class CsvSample implements EntryPoint {
 
-   private RpcSampleView rpcSampleView;
+    private RpcSampleView rpcSampleView;
 
-   public void onModuleLoad() {
-      rpcSampleView = new RpcSampleView();
-      RootPanel.get().add(rpcSampleView);
-   }
+    public void onModuleLoad() {
+        rpcSampleView = new RpcSampleView();
+        RootPanel.get().add(rpcSampleView);
+    }
 }

@@ -11,18 +11,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyServiceImpl implements MyService {
 
-  private static final Logger logger = LoggerFactory.getLogger(MyServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyServiceImpl.class);
 
-  @Autowired
-  private FooBeanFactory fooBeanFactory;
+    @Autowired
+    private FooBeanFactory fooBeanFactory;
 
-  public FooBean createBean(String name) {
-    FooBean fb = fooBeanFactory.createFooBean(name);
+    public FooBean createBean(String name) {
+        FooBean fb = fooBeanFactory.createFooBean(name);
 
-    logger.info(FooBean.class.getSimpleName() + " instance create with '"
-        + name + "'");
+        logger.info(FooBean.class.getSimpleName() + " instance create with '"
+                + name + "'");
 
-    return fb;
-  }
+        return fb;
+    }
 
 }

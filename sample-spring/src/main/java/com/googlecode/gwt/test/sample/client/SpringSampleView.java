@@ -18,6 +18,7 @@ public class SpringSampleView extends Composite {
 
     interface SpringSampleViewUiBinder extends UiBinder<Widget, SpringSampleView> {
     }
+
     private static SpringSampleViewUiBinder uiBinder = GWT.create(SpringSampleViewUiBinder.class);
     @UiField
     Button button;
@@ -25,7 +26,7 @@ public class SpringSampleView extends Composite {
     Label label;
     @UiField
     TextBox textBox;
-//   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
+    //   private final GreetingServiceAsync greetingService = GWT.create(GreetingService.class);
     private MyServiceAsync service = GWT.create(MyService.class);
 
     public SpringSampleView() {
@@ -37,7 +38,7 @@ public class SpringSampleView extends Composite {
     @UiHandler("button")
     void onClick(ClickEvent e) {
         label.setVisible(true);
-        
+
         AsyncCallback<FooBean> callback = new AsyncCallback<FooBean>() {
             public void onFailure(Throwable caught) {
                 // Show the RPC error message to the user
