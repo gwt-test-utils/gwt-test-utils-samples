@@ -8,8 +8,6 @@ import com.googlecode.gwt.test.csv.CsvMacros;
 import com.googlecode.gwt.test.csv.CsvMethod;
 import com.googlecode.gwt.test.csv.GwtCsvTest;
 import com.googlecode.gwt.test.finder.GwtFinder;
-import com.googlecode.gwt.test.finder.Node;
-import com.googlecode.gwt.test.finder.NodeObjectFinder;
 import com.googlecode.gwt.test.rpc.ServletMockProviderAdapter;
 import org.junit.Before;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 @GwtModule("com.googlecode.gwt.test.sample.CsvSample")
-@CsvDirectory(value = "functional-tests", extension = ".csv")
+@CsvDirectory(value = "functional-tests")
 @CsvMacros("functional-tests/macros")
 public class CsvSampleTest extends GwtCsvTest {
 
@@ -57,17 +55,9 @@ public class CsvSampleTest extends GwtCsvTest {
             }
         });
 
-        GwtFinder.registerNodeFinder("app", new NodeObjectFinder() {
-            public Object find(Node node) {
-                return csvRunner.getNodeValue(app, node);
-            }
-        });
+        GwtFinder.registerNodeFinder("app", node -> csvRunner.getNodeValue(app, node));
 
-        GwtFinder.registerNodeFinder("rpcSampleView", new NodeObjectFinder() {
-            public Object find(Node node) {
-                return csvRunner.getNodeValue(RootPanel.get().getWidget(0), node);
-            }
-        });
+        GwtFinder.registerNodeFinder("rpcSampleView", node -> csvRunner.getNodeValue(RootPanel.get().getWidget(0), node));
     }
 
     @Override

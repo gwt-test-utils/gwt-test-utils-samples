@@ -27,16 +27,13 @@ public class RpcSampleViewWithMockitoTest extends GwtTestWithMockito {
         assertThat(view.label).isNotVisible();
 
         // mock service failed invocation
-        doFailureCallback(new RuntimeException("expected mocked runtime exception")).when(
-                greetingServiceAsync).greetServer(eq("Ben Linus"),
-                any(AsyncCallback.class));
+        doFailureCallback(new RuntimeException("expected mocked runtime exception")).when(greetingServiceAsync).greetServer(eq("Ben Linus"), any());
 
         // Act
         Browser.click(view.button);
 
         // Assert
-        Mockito.verify(greetingServiceAsync).greetServer(eq("Ben Linus"),
-                any(AsyncCallback.class));
+        Mockito.verify(greetingServiceAsync).greetServer(eq("Ben Linus"), any());
         assertThat(view.label).isVisible().textEquals("Server error: expected mocked runtime exception");
     }
 
@@ -49,13 +46,13 @@ public class RpcSampleViewWithMockitoTest extends GwtTestWithMockito {
         assertThat(view.label).isNotVisible();
 
         // mock service succeed invocation
-        doSuccessCallback("Mocked hello message").when(greetingServiceAsync).greetServer(eq("Ben Linus"), any(AsyncCallback.class));
+        doSuccessCallback("Mocked hello message").when(greetingServiceAsync).greetServer(eq("Ben Linus"), any());
 
         // Act
         Browser.click(view.button);
 
         // Assert
-        Mockito.verify(greetingServiceAsync).greetServer(eq("Ben Linus"), any(AsyncCallback.class));
+        Mockito.verify(greetingServiceAsync).greetServer(eq("Ben Linus"), any());
         assertThat(view.label).isVisible().textEquals("Mocked hello message");
     }
 

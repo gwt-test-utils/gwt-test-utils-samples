@@ -9,7 +9,7 @@ import com.googlecode.gwt.test.utils.events.Browser;
 import org.junit.Test;
 
 import static com.googlecode.gwt.test.assertions.GwtAssertions.assertThat;
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @GwtModule("com.googlecode.gwt.test.sample.Sample")
 public class SampleViewTest extends GwtTest {
@@ -33,12 +33,7 @@ public class SampleViewTest extends GwtTest {
     public void deferredCommandShouldNotBeTriggerSynchronously() {
         // Arrange
         final StringBuilder sb = new StringBuilder();
-        ScheduledCommand cmd = new ScheduledCommand() {
-
-            public void execute() {
-                sb.append("triggered!");
-            }
-        };
+        ScheduledCommand cmd = () -> sb.append("triggered!");
 
         // Assert the cmd is not yet triggered
         assertThat(sb.toString()).isEmpty();
